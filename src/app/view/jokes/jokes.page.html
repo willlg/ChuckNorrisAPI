@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+     Piadas do Chuck Norris
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button (click)="getRandomJoke()">Clique para uma piada</ion-button>
+
+  <ion-card *ngIf="joke">
+    <img src="assets/chuck-norris-placeholder.png" alt="Chuck Norris Placeholder">
+    <ion-card-header>
+      <ion-card-title>{{ joke.value }}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+</ion-content>
