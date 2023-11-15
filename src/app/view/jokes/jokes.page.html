@@ -1,18 +1,25 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-     Piadas do Chuck Norris
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <ion-button (click)="getRandomJoke()">Clique para uma piada</ion-button>
+  <ion-searchbar [(ngModel)]="searchQuery" (ionChange)="searchJokes()"></ion-searchbar>
+  <ion-button expand="full" (click)="searchJokes()">Buscar</ion-button>
+  <ion-button expand="full" (click)="getRandomJoke()">Piada Aleatória</ion-button>
 
   <ion-card *ngIf="joke">
     <img src="assets/chuck-norris-placeholder.png" alt="Chuck Norris Placeholder">
     <ion-card-header>
-      <ion-card-title>{{ joke.value }}</ion-card-title>
+      <ion-card-title>Piada Aleatória</ion-card-title>
     </ion-card-header>
+    <ion-card-content>
+      {{ joke.value }}
+    </ion-card-content>
   </ion-card>
+
+  <ion-card *ngFor="let joke of jokes; let i = index">
+    <ion-card-header>
+      <ion-card-title>Piada {{ i + 1 }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{ joke.value }}
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

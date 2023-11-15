@@ -18,14 +18,15 @@ export class TranslationService {
       'X-RapidAPI-Host': this.apiHost
     });
 
-    const params = new HttpParams()
+    let params = new HttpParams()
       .set('text', text)
       .set('to', targetLanguage);
 
     if (sourceLanguage) {
-      params.set('from', sourceLanguage);
+      params = params.set('from', sourceLanguage); // Correção aqui
     }
 
     return this.http.get<any>(this.apiUrl, { headers, params });
   }
+
 }

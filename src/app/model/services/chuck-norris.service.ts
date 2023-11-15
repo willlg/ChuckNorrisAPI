@@ -3,13 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 import { TranslationService } from './translation.service';
-
-interface ChuckNorrisJoke {
-  icon_url: string;
-  id: string;
-  url: string;
-  value: string;
-}
+import { ChuckNorrisJoke } from 'src/app/interfaces/ChuckNorrisJoke';
 
 @Injectable({
   providedIn: 'root'
