@@ -23,7 +23,7 @@ export class TranslationService {
       .set('to', targetLanguage);
 
     if (sourceLanguage) {
-      params = params.set('from', sourceLanguage); // Correção aqui
+      params = params.set('from', sourceLanguage);
     }
 
     return this.http.get<any>(this.apiUrl, { headers, params });

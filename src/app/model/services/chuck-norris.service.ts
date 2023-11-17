@@ -29,6 +29,10 @@ export class ChuckNorrisService {
     );
   }
 
+  getJokeById(id: string): Observable<ChuckNorrisJoke> {
+    return this.http.get<ChuckNorrisJoke>(`${this.apiUrl}/${id}`);
+   }   
+
   getRandomJokeByCategory(category: string): Observable<ChuckNorrisJoke> {
     return this.http.get<ChuckNorrisJoke>(`${this.apiUrl}/random?category=${category}`);
   }

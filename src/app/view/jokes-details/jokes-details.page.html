@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+  <ion-title>Detalhes da Piada</ion-title>
+  </ion-toolbar>
+ </ion-header>
+ 
+ <ion-content *ngIf="joke">
+  <ion-card>
+  <ion-card-header>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-img src="assets/chuck-norris-placeholder.png" alt="Chuck Norris Placeholder"></ion-img>
+    {{ joke.value }}
+  </ion-card-content>
+  </ion-card>
+ </ion-content> 
+ 

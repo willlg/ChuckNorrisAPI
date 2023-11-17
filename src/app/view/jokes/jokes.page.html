@@ -3,23 +3,44 @@
   <ion-button expand="full" (click)="searchJokes()">Buscar</ion-button>
   <ion-button expand="full" (click)="getRandomJoke()">Piada Aleatória</ion-button>
 
-  <ion-card *ngIf="joke">
-    <img src="assets/chuck-norris-placeholder.png" alt="Chuck Norris Placeholder">
-    <ion-card-header>
-      <ion-card-title>Piada Aleatória</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      {{ joke.value }}
-    </ion-card-content>
-  </ion-card>
+  <ion-grid>
+    <ion-row *ngIf="joke">
+      <ion-col size="12">
+        <ion-card (click)="navigateToDetails(joke)">
+          <ion-card-header>
+            <ion-card-title>Piada Aleatória</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-img src="assets/chuck-norris-placeholder.png" alt="Chuck Norris Placeholder"></ion-img>
+            <p>{{ joke.value }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
 
-  <ion-card *ngFor="let joke of jokes; let i = index">
-    <ion-card-header>
-      <ion-card-title>Piada {{ i + 1 }}</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      {{ joke.value }}
-    </ion-card-content>
-  </ion-card>
-
+    <ion-row *ngFor="let joke of jokes; let i = index">
+      <ion-col size="6">
+        <ion-card (click)="navigateToDetails(joke)">
+          <ion-card-header>
+            <ion-card-title>Piada {{ i * 2 + 1 }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-img src="assets/chuck-norris-placeholder.png" alt="Chuck Norris Placeholder"></ion-img>
+            <p style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">{{ joke.value }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6" *ngIf="jokes[i * 2 + 1]">
+        <ion-card (click)="navigateToDetails(jokes[i * 2 + 1])">
+          <ion-card-header>
+            <ion-card-title>Piada {{ i * 2 + 2 }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-img src="assets/chuck-norris-placeholder.png" alt="Chuck Norris Placeholder"></ion-img>
+            <p style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">{{ jokes[i * 2 + 1].value }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
